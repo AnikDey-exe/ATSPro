@@ -2,17 +2,9 @@ from flask import Flask, request
 from flask_cors import CORS, cross_origin
 from ats_test3 import run_ats
 
-UPLOAD_FOLDER = r'C:\Users\manas\ATSTracker\uploads'
-ALLOWED_EXTENSIONS = {'pdf'}
-
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 CORS(app)
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route("/")
 def entry_point():

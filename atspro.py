@@ -107,9 +107,10 @@ class ATS:
 
 # used with pre trained models  
 class ATSModel:
-    def __init__(self, model_path):
-        self.model_path = model_path
-        self.model = Word2Vec.load(model_path)
+    def __init__(self, model):
+        # self.model_path = model_path
+        # self.model = Word2Vec.load(model_path)
+        self.model = model
     
     def is_in_vocab(self, phrase):
         """

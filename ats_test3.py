@@ -1,8 +1,8 @@
 from atspro import ATS, ATSModel
 
-def run_ats(resume_url, job_keywords):
+def run_ats(model, resume_url, job_keywords):
     # job_keywords = ['react', 'javascript', 'frontend', 'html', 'css', 'critical', 'creative', 'website', 'solving', 'design', 'development']
-    ats = ATSModel(model_path='atstweaked2.model')
+    ats = ATSModel(model=model)
     # resume = ATS.process_resume(r'C:\Users\manas\Dropbox\My PC (LAPTOP-OEFAVRL0)\Downloads\front-end-developer-resume-example.pdf')
     resume = ATS.process_resume_url(resume_url)
 
@@ -24,6 +24,7 @@ def run_ats(resume_url, job_keywords):
                 print(f"{str(sim[0])} between {keyword} and {resume_word}")
                 if sim[1] > max_sim:
                     max_sim = sim[1]
+                break
         if words_are_sim:
             # print("k ",keyword)
             sim_words += 1

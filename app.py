@@ -58,6 +58,24 @@ def ats():
         return {
             "response": "Nothing"
         }
+    
+@app.route("/ats2", methods=["GET", "POST"])
+def ats2():
+    if request.method == 'POST':
+        content = request.get_json()
+        resume_url = content.get('url')
+        keywords = content.get('keywords')
+        print("r ",resume_url)
+        keywords_arr = keywords.split(",")
+        result = run_ats(model_f, resume_url, keywords_arr)
+        print("Eligible ",result)
+        return {
+            "response": result
+        }
+    else:
+        return {
+            "response": "Nothing"
+        }
 
 # main driver function
 if __name__ == '__main__':

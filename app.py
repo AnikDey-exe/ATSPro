@@ -2,6 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS, cross_origin
 from ats_test3 import run_ats
 from atspro import ATSModel
+from gensim.models import Word2Vec 
 
 app = Flask(__name__)
 
@@ -13,11 +14,12 @@ def entry_point():
 
 @app.route("/test", methods=["POST"])
 def test():
-    ats = ATSModel(model_path='atstweaked2.model')
-    dec = ats.is_similar("react", "business")
-    print(dec[1])
+    model = Word2Vec.load('atstweaked2.model')
+    sim = model.wv.similarity("business", "marketing")
+    sim_percentage = round((sim)*100, 2)
+    print(sim_percentage)
     return {
-        "response": dec[0]
+        "response": sim_percentage
     }
 
 

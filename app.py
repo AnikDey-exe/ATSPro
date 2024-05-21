@@ -6,6 +6,8 @@ from gensim.models import Word2Vec
 
 app = Flask(__name__)
 
+model_f = Word2Vec.load('atstweaked2.model')
+
 CORS(app)
 
 @app.route("/")
@@ -27,6 +29,15 @@ def test2():
     model = Word2Vec.load('atstweaked2.model')
     return {
         "response": "test 2"
+    }
+
+@app.route("/test3", methods=["POST"])
+def test3():
+    sim = model_f.wv.similarity("business", "marketing")
+    sim_percentage = round((sim)*100, 2)
+    print(sim_percentage)
+    return {
+        "response": sim_percentage
     }
 
 

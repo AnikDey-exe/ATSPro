@@ -22,6 +22,13 @@ def test():
         "response": sim_percentage
     }
 
+@app.route("/test2", methods=["POST"])
+def test2():
+    model = Word2Vec.load('atstweaked2.model')
+    return {
+        "response": "test 2"
+    }
+
 
 @app.route("/ats", methods=["GET", "POST"])
 def ats():

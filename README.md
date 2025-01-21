@@ -1,1 +1,1 @@
-This is an ats that operates using AI.
+This is an ATS that operates using AI. This ATS uses Natural Language Processing methods and the Gensim library to determine whether applicants are a good fit for a position. Features of this ATS include generating a summary of the resume, determining a match percentage with the job requirements, and deciding whether the applicant is a good fit for the position.
